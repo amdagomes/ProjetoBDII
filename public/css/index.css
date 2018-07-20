@@ -1,0 +1,85 @@
+div.bg{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-image: url('../img/bg-login.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index: -1;
+}
+
+div.overlay{
+	width: 100vw;
+	height: 100vh;
+	background: rgba(10,161,166,0.8);
+	background: -moz-linear-gradient(top, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(10,161,166,0.8)), color-stop(100%, rgba(212,26,240,0.8)));
+	background: -webkit-linear-gradient(top, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: -o-linear-gradient(top, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: -ms-linear-gradient(top, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: linear-gradient(to bottom, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0aa1a6', endColorstr='#d41af0', GradientType=0 );
+}
+
+.box-login{
+	width: 30%;
+	max-width: 350px;
+	min-width: 250px;
+	padding: 3%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid transparent;
+	border-radius: 10px;
+	background-color: rgba(39, 71, 107, .6);
+	color: rgb(169, 180, 195);
+}
+
+.formulario h4{
+	margin-bottom: 5px;
+	font-weight: 400;
+}
+.formulario input{
+	width: 100%;
+}
+.formulario input:not([type=submit]){
+	padding: 5px 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+.formulario input[type=submit]{
+	background-color: #36e89b;
+	padding: 10px 20px;
+	border-radius: 25px;
+	border: transparent;
+	color: white;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+.box-login a{
+	color: rgb(169, 180, 195);
+	text-decoration: none;
+	font-size: 12px;
+}
+
+.modal h2{
+	margin-bottom: 20px;
+	color: #3c4859;
+}
+
+.modal .formulario input:not([type=submit]){
+	border-radius: 20px;
+	padding: 10px 15px;
+}
+
+@media screen and (max-width: 400px){
+	.box-login{
+		padding: 20px;
+	}
+}
