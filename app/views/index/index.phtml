@@ -3,9 +3,10 @@
     <div class="overlay"></div>
     <div class="center">
         <div class="box-login">
-            <form method="post" class="formulario">
+            <?php echo (isset($this->alert) ? $this->alert : '' ) ?>
+            <form method="post" action="index/logar" class="formulario">
                 <h4>Email</h2>
-                <input type="email" name="user" required="">
+                <input type="email" name="email" required="">
                 <h4>Senha</h2>
                 <input type="password" name="password" required="">
                 <input type="submit" value="Login" name="logar">

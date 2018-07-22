@@ -18,6 +18,9 @@
     'dbname' => env('MYSQL_DATABASE', 'projetobdii'),
     'charset' => env('MYSQL_CHARSET', 'utf8')
   ]);
+
+  $configs->env->development->auth->setURLs('/ProjetoBDII/home/', '/ProjetoBDII/');
+  return $configs;
 /*
 
   $configs->env->development->mail->setFrom([
