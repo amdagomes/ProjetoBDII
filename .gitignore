@@ -1,8 +1,6 @@
 # Created by https://www.gitignore.io/api/osx,sass,less,macos,linux,bower,windows,eclipse,netbeans,composer,phpstorm,notepadpp,dreamweaver,aptanastudio,visualstudio,visualstudiocode
 
-composer.lock
 data/
-.env
 sftp-config.json
 
 ### AptanaStudio ###
@@ -71,8 +69,6 @@ local.properties
 
 ### Composer ###
 composer.phar
-composer.lock
-/vendor/
 
 # Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
