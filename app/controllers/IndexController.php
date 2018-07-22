@@ -16,35 +16,6 @@ class IndexController extends \HXPHP\System\Controller
     $this->auth->redirectCheck(true);
   }
 
-  public function cadastrarAction()
-	{
-		$this->view->setFile('index');
-
-		$this->request->setCustomFilters(array(
-			'email' => FILTER_VALIDATE_EMAIL
-		));
-
-		$post = $this->request->post();
-
-		if (!empty($post)) {
-			$cadastrarUsuario = User::cadastrar($post);
-
-			if ($cadastrarUsuario->status === false) {
-				$this->load('Helpers\Alert', array(
-					'danger',
-					'Ops! Não foi possível efetuar seu cadastro. Verifique os erros abaixo:',
-					$cadastrarUsuario->errors,
-          '<br>'
-				));
-			}
-			else {
-				$this->load('Helpers\Alert', array(
-          'Cadastro realizado'
-        ));
-			}
-		}
-	}
-
   public function logarAction()
 	{
 		$this->auth->redirectCheck(true);
@@ -57,7 +28,7 @@ class IndexController extends \HXPHP\System\Controller
 			$login = User::login($post);
 
 			if ($login->status === true){
-				$this->auth->login($login->user->id, $login->user->email);
+				$this->auth->$login($login->user->id, $login->user->email);
 			}
 			else {
 				$this->load('Modules\Messages', 'auth');

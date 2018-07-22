@@ -20,7 +20,7 @@
   ]);
 
   $configs->env->development->auth->setURLs('/ProjetoBDII/home/', '/ProjetoBDII/');
-  return $configs;
+
 /*
 
   $configs->env->development->mail->setFrom([

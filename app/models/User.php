@@ -51,6 +51,8 @@ class User extends \HXPHP\System\Model{
 
 			if($password['password'] === $user->password){
 				$callbackObj->status = true;
+			} else{
+					$callbackObj->code = 'senha não corresponde';
 			}
 		}
 		else {

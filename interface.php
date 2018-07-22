@@ -6,7 +6,7 @@ define('BOWER', 'public/bower_components/');
 define('CSS', 'public/css/');
 define('IMG', 'public/img/');
 
-$view_title = 'HXPHP Framework';
+$view_title = 'Eventos acadêmicos';
 $add_js = $add_css = '';
 
 include $dir . 'header.phtml';
