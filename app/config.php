@@ -19,7 +19,7 @@
     'charset' => env('MYSQL_CHARSET', 'utf8')
   ]);
 
-  $configs->env->development->auth->setURLs('/ProjetoBDII/home/', '/ProjetoBDII/');
+  $configs->env->development->auth->setURLs('/ProjetoBDII/home/', '/ProjetoBDII/login/');
 
 /*
 

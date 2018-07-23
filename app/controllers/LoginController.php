@@ -1,5 +1,5 @@
 <?php
-class IndexController extends \HXPHP\System\Controller
+class LoginController extends \HXPHP\System\Controller
 {
 
   public function __construct($configs)
@@ -13,7 +13,6 @@ class IndexController extends \HXPHP\System\Controller
       true
     );
 
-    $this->auth->redirectCheck(true);
   }
 
   public function indexAction()

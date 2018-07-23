@@ -6,7 +6,7 @@
     <div class="center">
         <div class="box-login box-formulario fadeIn">
             <?php echo (isset($this->alert) ? $this->alert : '' ) ?>
-            <form method="post" action="index/logar" class="formulario">
+            <form method="post" action="<?php echo BASE . 'login/logar' ?>" class="formulario">
                 <h4>Email</h2>
                 <input type="email" name="email" required="">
                 <h4>Senha</h2>

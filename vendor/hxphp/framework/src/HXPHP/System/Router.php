@@ -6,7 +6,7 @@ class Router
 {
     public $subfolder = '';
 
-    public $controller = 'IndexController';
+    public $controller = 'LoginController';
 
     public $action = 'indexAction';
 
