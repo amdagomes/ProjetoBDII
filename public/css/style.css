@@ -31,6 +31,10 @@ div.overlay-superior{
 	background: rgba(0,0,0,0.7);
 }
 
+div.alert ul li{
+	list-style: none;
+}
+
 .box-formulario{
 	position: absolute;
 	top: 50%;
@@ -115,6 +119,30 @@ div.box-cadastro-usuario a.close i{
 .box-cadastro-usuario .formulario input[type=submit]{
 	margin-bottom: 0px;
 }
+
+/**
+* HOME
+* ===================================================
+*/
+
+header{
+	padding: 1% 3%;
+}
+
+div.box-mapa{
+	width: 70%;
+	height: 600px;
+	border: 1px solid red;
+	position: relative;
+}
+div.box-mapa h2{
+	margin-bottom: 20px;
+}
+div.box-mapa div#map{
+	width: 100%;
+	height: 100%;
+}
+
 
 @media screen and (max-width: 400px){
 	.box-login{

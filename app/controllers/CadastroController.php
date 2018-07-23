@@ -32,7 +32,7 @@ class CadastroController extends \HXPHP\System\Controller
 			if ($cadastrarUsuario->status === false) {
 				$this->load('Helpers\Alert', array(
 					'danger',
-					'Não foi possível efetuar seu cadastro.Verifique os erros abaixo:',
+					'Não foi possível efetuar seu cadastro. Verifique os erros abaixo:',
 					$cadastrarUsuario->errors
 				));
 			}

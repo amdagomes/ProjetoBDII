@@ -50,13 +50,15 @@ class User extends \HXPHP\System\Model{
 			$password = \HXPHP\System\Tools::hashHX($post['password'], $user->salt);
 
 			if($password['password'] === $user->password){
+				$callbackObj->user = $user;
 				$callbackObj->status = true;
+				$callbackObj->code = $user->nome;
 			} else{
-					$callbackObj->code = 'senha não corresponde';
+					$callbackObj->code = 'senha-incorreta';
 			}
 		}
 		else {
-			$callbackObj->code = 'dados-incorretos';
+			$callbackObj->code = 'email-incorreto';
 		}
 
 		return $callbackObj;

@@ -20,7 +20,7 @@ class IndexController extends \HXPHP\System\Controller
 	{
 		$this->auth->redirectCheck(true);
 
-		$this->view->setFile('home');
+		$this->view->setFile('index');
 
 		$post = $this->request->post();
 
@@ -28,14 +28,12 @@ class IndexController extends \HXPHP\System\Controller
 			$login = User::login($post);
 
 			if ($login->status === true){
-				$this->auth->$login($login->user->id, $login->user->email);
+				$this->auth->login($login->user->id, $login->user->email);
 			}
 			else {
 				$this->load('Modules\Messages', 'auth');
 				$this->messages->setBlock('alerts');
-				$error = $this->messages->getByCode($login->code, array(
-					'message' => 'erro na autenticação'
-				));
+				$error = $this->messages->getByCode($login->code);
 
 				$this->load('Helpers\Alert', $error);
 			}
