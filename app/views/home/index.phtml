@@ -3,22 +3,23 @@
 
 <header>
   <h4 class="left">NOME DO SISTEMA</h4>
-  <p class="rigth">Bem Vindo <a href="#">sair</a></p>
-
+  <p class="rigth">Bem Vindo <a href="<?php echo BASE . 'index/sair'; ?>">sair</a></p>
   <div class="clear"></div>
 </header>
 
 <section>
-<div class="center">
-
-  <div class="box-mapa">
-    <h2>Eventos proximos a mim</h2>
-    <div id="map"></div>
+<div class="container">
+  <div class="center header-top">
+      <div class="box-mapa">
+        <div class="top-box-mapa">
+          <h2>Eventos proximos a mim</h2>
+        </div>
+        <div id="map"></div>
+      </div>
   </div>
-
 </div>
-
 </section>
+<div class="section"></div>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvUhehS52WPxo9Auyw_7dO7HHyLlqzmcU&callback=initMap">
 </script>
 <script src="<?php echo JS; ?>maps.js"></script>

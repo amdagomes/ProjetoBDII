@@ -16,6 +16,11 @@ class IndexController extends \HXPHP\System\Controller
     $this->auth->redirectCheck(true);
   }
 
+  public function indexAction()
+	{
+		$this->auth->redirectCheck(true);
+	}
+
   public function logarAction()
 	{
 		$this->auth->redirectCheck(true);
