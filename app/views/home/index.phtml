@@ -2,24 +2,31 @@
 </body>
 
 <header>
-  <h4 class="left">NOME DO SISTEMA</h4>
-  <p class="rigth">Bem Vindo <a href="<?php echo BASE . 'login/sair'; ?>">sair</a></p>
-  <div class="clear"></div>
-</header>
-
-<section>
-<div class="container">
-  <div class="center header-top">
-      <div class="box-mapa">
-        <div class="top-box-mapa">
-          <h2>Eventos proximos a mim</h2>
-        </div>
+    <div class="header">
+      <div class="center">
+        <h4 class="left">NOME DO SISTEMA</h4>
+        <a class="rigth" href="<?php echo BASE . 'login/sair'; ?>">sair</a>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="sub-header">
+      <div class="center">
+        <h2>Eventos proximos a mim</h2>
+      </div>
+    </div>
+  </header>
+  <section class="section-home">
+      <div class="center">
         <div id="map"></div>
       </div>
-  </div>
-</div>
-</section>
-<div class="section"></div>
+  </section>
+
+  <footer>
+    <div class="center">
+      <a href="">Criar evento</a>
+      <a href="">Buscar evento</a>
+    </div>
+  </footer>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvUhehS52WPxo9Auyw_7dO7HHyLlqzmcU&callback=initMap">
 </script>
 <script src="<?php echo JS; ?>maps.js"></script>

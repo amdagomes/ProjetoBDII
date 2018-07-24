@@ -25,6 +25,7 @@ class HomeController extends \HXPHP\System\Controller
 
 		$this->view->setTitle('Eventos Acadêmicos')
 					->setVar('user', $user);
+
 	}
 
 }

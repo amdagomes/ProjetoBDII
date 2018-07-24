@@ -125,51 +125,66 @@ div.box-cadastro-usuario a.close i{
 * ===================================================
 */
 
-header{
-	padding: 1% 3%;
-	background-color: #2c3742;
+body.home{
+	background-color: #ebebeb;
 }
 
-div.section{
-	width: 100%;
-  height: 100vh;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-	background-attachment: fixed;
-	background-color: #C0C5C1;
+div.header{
+	padding: 1%;
+	background-color: #432C6A;
+	color: white
 }
-div.container{
-	height: 100px;
-	background-color: #34424F;
+div.header a{
+	color: white;
+	text-decoration: none;
 }
-div.header-top{
-	position: relative;
+
+div.sub-header{
+	padding: 2% 1% 0 1%;
+	background-color: #4C3177;
 }
-div.box-mapa{
-	width: 100%;
-	height: 400px;
-	position: absolute;
-	margin-top: 30px;
-	left: 0;
-	
-}
-div.top-box-mapa{
-	height: 17.6%;
-	padding: 2%;
-	border-top-left-radius: 5px;
+
+div.sub-header div{
+	padding: 2% 2% 1% 2%;
 	border-top-right-radius: 5px;
-	background-color: #DCDCDC;
+	border-top-left-radius: 5px;
+	background-color: #d7d7d7;
+	color: #4C3177;
 }
-div.box-mapa h2{
+section.section-home div.center{
+	position: relative;
+	height: 400px;
+	min-height: 250px;
+}
 
-}
-div.box-mapa div#map{
+div#map{
+	position: absolute;
+	left: 0;
 	width: 100%;
 	height: 100%;
-	padding: 2%;
 }
 
+footer{
+	padding: 2%;
+	text-align: center;
+}
+
+footer a{
+	text-decoration: none;
+	padding: 10px 15px;
+	border-radius: 50px;
+	color: white;
+	background-color: #36e89b;
+	transition: 1s ease;
+}
+footer a:hover{
+	background-color: #36e89b;
+	border-bottom: 3px solid #30CE8A;
+}
+
+footer a:first-child{
+	margin-right: 4%;
+}
 
 @media screen and (max-width: 400px){
 	.box-login{
