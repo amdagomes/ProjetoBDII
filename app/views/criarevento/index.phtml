@@ -1,0 +1,62 @@
+</head>
+</body>
+
+<header>
+    <div class="header">
+      <div class="center">
+        <h4 class="left">NOME DO SISTEMA </h4>
+        <a class="rigth" href="<?php echo BASE . 'login/sair'; ?>">sair</a>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="sub-header">
+      <div class="center">
+        <h2>Criar evento</h2>
+      </div>
+    </div>
+  </header>
+  <section class="section-evento">
+      <div class="center">
+        <form method="post" class="formulario">
+          <div class="left w40">
+            <h4>Titulo</h4>
+            <input type="text" required name="titulo"/>
+            <div class="sub-div-form left">
+              <h4>Periodo</h4>
+              <input type="date" required name="periodo"/>
+            </div>
+            <div class="sub-div-form rigth">
+              <h4>Tema</h4>
+              <select name="tema">
+                <option value="Contrução Civil">Contrução Civil</option>
+                <option value="Informática">Informática</option>
+                <option value="Automação">Automação</option>
+                <option value="Linguagens">Linguagens</option>
+                <option value="Humanidades">Humanidades</option>
+                <option value="Diversos">Diversos</option>
+              </select>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="rigth w60 mapa">
+            <input id="pac-input" type="text" placeholder="Buscar...">
+            <div id="map"></div>
+          </div>
+          <div class="clear"></div>
+        </form>
+      </div>
+  </section>
+
+  <footer>
+    <div class="center">
+      <a href="criarEvento/criar">Criar</a>
+      <a href="<?php echo BASE; ?>">Voltar</a>
+    </div>
+  </footer>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvUhehS52WPxo9Auyw_7dO7HHyLlqzmcU&libraries=places&callback=initAutocomplete"
+         async defer></script>
+
+<script src="<?php echo JS; ?>maps.js">
+  <script src="<?php echo JS; ?>mapa-evento.js">
+
+  </script>

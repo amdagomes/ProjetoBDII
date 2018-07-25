@@ -73,7 +73,7 @@ div.alert ul li{
 .formulario input{
 	width: 100%;
 }
-.formulario input:not([type=submit]){
+.formulario input:not([type=submit]), .formulario select{
 	padding: 5px 10px;
 	margin-bottom: 15px;
 	border: 1px solid #ccc;
@@ -157,7 +157,7 @@ section.section-home div.center{
 	min-height: 250px;
 }
 
-div#map{
+.section-home div#map{
 	position: absolute;
 	left: 0;
 	width: 100%;
@@ -184,6 +184,39 @@ footer a:hover{
 
 footer a:first-child{
 	margin-right: 4%;
+}
+
+/**
+* FORMULARIO CRIAR EVENTO
+* ============================================================
+*/
+section.section-evento {
+	margin-bottom: 15px;
+}
+section.section-evento .formulario{
+	padding-top: 20px;
+}
+section.section-evento .formulario div:first-child{
+	padding-right: 10px;
+}
+.sub-div-form{
+	width: 49%;
+}
+.sub-div-form input, .sub-div-form select{
+	width: 100%;
+}
+input#pac-input{
+	margin-bottom: 5px;
+}
+div.mapa{
+	height: 350px;
+	min-height: 200px;
+	margin-bottom: 20px;
+}
+
+section.section-evento form.formulario div#map{
+	width: 100%;
+	height: 90%;
 }
 
 @media screen and (max-width: 400px){
