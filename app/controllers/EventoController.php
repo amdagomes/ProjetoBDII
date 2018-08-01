@@ -1,6 +1,6 @@
 <?php
 
-class CriareventoController extends \HXPHP\System\Controller
+class EventoController extends \HXPHP\System\Controller
 {
   public function __construct($configs)
   {
@@ -15,14 +15,14 @@ class CriareventoController extends \HXPHP\System\Controller
 
     $this->auth->redirectCheck();
 
-    $user_id = $this->auth->getUserId();
-    $user = User::find($user_id);
+
 
     $this->load(
       'Helpers\Menu',
       $this->request,
       $this->configs
     );
+
   }
 
 	public function criarAction()
@@ -32,7 +32,7 @@ class CriareventoController extends \HXPHP\System\Controller
 		$post = $this->request->post();
 
 		if (!empty($post)) {
-			$cadastrarEvento = Event::cadastrar($post, $user_id);
+			$cadastrarEvento = Event::criar($post);
 
 			if ($cadastrarEvento->status === false) {
 				$this->load('Helpers\Alert', array(
@@ -43,5 +43,4 @@ class CriareventoController extends \HXPHP\System\Controller
 			}
 		}
 	}
-
 }

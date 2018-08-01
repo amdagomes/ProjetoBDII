@@ -45,6 +45,7 @@ class DateTime extends \DateTime implements DateTimeInterface
 	 */
 	public static $FORMATS = array(
 		'db'      => 'Y-m-d H:i:s',
+		'custom'	=> 'd-m-Y',
 		'number'  => 'YmdHis',
 		'time'    => 'H:i',
 		'short'   => 'd M H:i',
@@ -182,13 +183,13 @@ class DateTime extends \DateTime implements DateTimeInterface
 		$this->flag_dirty();
 		return parent::setTimezone($timezone);
 	}
-	
+
 	public function modify($modify)
 	{
 		$this->flag_dirty();
 		return parent::modify($modify);
 	}
-	
+
 	public function add($interval)
 	{
 		$this->flag_dirty();

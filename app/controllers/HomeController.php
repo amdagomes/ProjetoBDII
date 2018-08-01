@@ -23,6 +23,8 @@ class HomeController extends \HXPHP\System\Controller
 			$this->configs
 		);
 
+    $this->load('Helpers\Messages', $user->nome);
+
 		$this->view->setTitle('Eventos Acadêmicos')
 					->setVar('user', $user);
 
