@@ -3,7 +3,7 @@ var marker;
 var infowindow;
 var messagewindow;
 
-function initMap{
+function initMap(){
   infowindow = new google.maps.InfoWindow({
     content: document.getElementById('form')
   });
