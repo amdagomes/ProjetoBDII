@@ -1,6 +1,6 @@
 </head>
 </body>
-
+<?php require("resultado.php"); ?>
 <header>
     <div class="header">
       <div class="center">
@@ -30,16 +30,6 @@
 
 
 <script>
-      var customLabel = {
-        Informatica: {
-          label: 'I'
-        },
-        Construcao: {
-          label: 'C'
-        }
-        
-
-      };
 
         function initMap(){
 
@@ -48,67 +38,10 @@
           zoom: 12
         });
         var infoWindow = new google.maps.InfoWindow;
-
-          // Change this depending on the name of your PHP or XML file
-          downloadUrl('resultado.php', function(data) {
-            var xml = data.responseXML;
-            
-            var markers = xml.documentElement.getElementsByTagName('marker');
-            
-            Array.prototype.forEach.call(markers, function(markerElem) {
-              var id = markerElem.getAttribute('id');
-              var titulo = markerElem.getAttribute('titulo');
-              var periodo = markerElem.getAttribute('periodo');
-              
-              var tema = markerElem.getAttribute('tema');
-              var point = new google.maps.LatLng(
-                  parseFloat(markerElem.getAttribute('lat')),
-                  parseFloat(markerElem.getAttribute('lng')));
-
-               var strong = document.createElement('strong');
-              strong.textContent = titulo
-              infowincontent.appendChild(strong);
-              infowincontent.appendChild(document.createElement('br'));
-
-              var text = document.createElement('text');
-              text.textContent = tema
-              infowincontent.appendChild(text);
-              var icon = customLabel[type] || {};
-              var marker = new google.maps.Marker({
-                map: map,
-                position: point,
-                label: icon.label
-              });
-              marker.addListener('click', function() {
-                infoWindow.setContent(infowincontent);
-                infoWindow.open(map, marker);
-              });
-            });
-          });
         }
-
-
-
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-          }
-        };
-
-        request.open('GET', url, true);
-        request.send(null);
-      }
-
-      function doNothing() {}
-    </script>
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDovYS0eQy68-r58VrkA6Ca3-CFkMCPI0g&callback=initMap">
     </script>
-
-
+<script src="<?php echo JS ?>test.js"></script>
