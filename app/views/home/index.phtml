@@ -67,16 +67,45 @@ var map;
             // Browser doesn't support Geolocation
             handleLocationError(false, infoWindow, map.getCenter());
           }
-
+          var marker;
+          var markers = [];
         //insere marcadores no mapa
         evento.forEach(function(obj, index){
-          var marker = new google.maps.Marker({
+          marker = new google.maps.Marker({
               position: {lat: Number(obj.lat), lng: Number(obj.lng)},
-              title:obj.tema
+              title:obj.tema,
+              id: obj.id
           });
+          
           marker.setMap(map);
+          markers.push(marker);
         });
 
+        /*(function (markers, evento) {
+            google.maps.event.addListener(marker, "click", function (e) {
+                var id = Number(marker.id);
+                evento.forEach(function(obj, index){
+                  if(id == Number(obj.id)){
+                    var conteudo = '<h4>Titulo: ' + obj.titulo + '</h4><p>Tema: ' + obj.tema + '<br>Data: ' + obj.periodo + '</p>';
+                    infoWindow.setContent(conteudo);
+                    infoWindow.open(map, marker);
+                  }
+                  });
+            });
+        })(marker, evento);
+        */
+
+
+        google.maps.event.addListener(marker, "click", function (e) {
+            var id = Number(marker.id);
+            evento.forEach(function(obj, index){
+              if(id == Number(obj.id)){
+                var conteudo = '<h4>Titulo: ' + obj.titulo + '</h4><p>Tema: ' + obj.tema + '<br>Data: ' + obj.periodo + '</p>';
+                infoWindow.setContent(conteudo);
+                infoWindow.open(map, marker);
+              }
+              });
+        });
 
         }
 
@@ -87,13 +116,6 @@ var map;
                                 'Error: Your browser doesn\'t support geolocation.');
         }
 
-        var mark = new google.maps.Marker;
-        google.maps.event.addListener(mark,'click',function() {
-            var infowindow = new google.maps.InfoWindow({
-              content:"Hello World!"
-            });
-          infowindow.open(map,mark);
-          });
 
 
 </script>
