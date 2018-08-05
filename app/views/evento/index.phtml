@@ -37,16 +37,16 @@
               </select>
             </div>
             <div class="clear"></div>
+            <input type="submit" value="Criar"/>
+            <p class="btn"><a  href="<?php echo BASE ?>">Voltar</a></p>
           </div>
           <div class="rigth w60 mapa">
-            <input id="pac-input" type="text" placeholder="Buscar...">
+            <input id="pac-input" type="text" placeholder="Buscar... " required>
             <div id="map"></div>
-            <input type="text" readonly id="lat" name="lat"/>
-            <input type="text" readonly id="long" name="lng"/>
+            <input type="hidden" readonly id="lat" name="lat"/>
+            <input type="hidden" readonly id="long" name="lng"/>
           </div>
           <div class="clear"></div>
-          <input type="submit" value="criar"/>
-          <a href="<?php echo BASE ?>">Voltar</a>
         </form>
       </div>
   </section>

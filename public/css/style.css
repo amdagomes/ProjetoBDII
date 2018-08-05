@@ -70,7 +70,7 @@ div.alert ul li{
 	margin-bottom: 15px;
 }
 
-.formulario input{
+.formulario input, .btn{
 	width: 100%;
 }
 .formulario input:not([type=submit]), .formulario select{
@@ -79,7 +79,7 @@ div.alert ul li{
 	border: 1px solid #ccc;
 	border-radius: 5px;
 }
-.formulario input[type=submit]{
+.formulario input[type=submit], .btn{
 	background-color: #36e89b;
 	padding: 10px 20px;
 	border-radius: 25px;
@@ -198,6 +198,13 @@ section.section-evento .formulario{
 }
 section.section-evento .formulario div:first-child{
 	padding-right: 10px;
+}
+p.btn{
+	text-align: center;
+}
+section.section-evento .formulario p.btn a{
+	color: white;
+	text-decoration: none;
 }
 .sub-div-form{
 	width: 49%;
