@@ -1,40 +1,47 @@
+
 </head>
 </body>
 <?php require("resultado.php"); ?>
-<header>
-    <div class="header">
-      <div class="center">
-        <h4 class="left">NOME DO SISTEMA </h4>
-        <?php echo (isset($this->alert) ? $this->alert : '' ) ?>
-        <a class="rigth" href="<?php echo BASE . 'login/sair'; ?>">sair</a>
-        <div class="clear"></div>
-      </div>
-    </div>
-    <div class="sub-header">
-      <div class="center">
-        <h2>Eventos proximos a mim</h2>
-      </div>
-    </div>
-  </header>
-  <section class="section-home">
-      <div class="center">
-        <div id="map"></div>
-      </div>
-  </section>
- <footer>
-    <div class="center">
-      <a href="<?php echo BASE; ?>evento/">Criar evento</a>
-      <a href="<?php echo BASE; ?>buscarEvento/">Buscar evento</a>
-    </div>
-  </footer>
 
-  <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvUhehS52WPxo9Auyw_7dO7HHyLlqzmcU&callback=initMap">
-     </script>
+<header>
+  <div>
+    <h3>SISTEMA</h3>
+  </div>
+</header>
+
+<nav class="nav left">
+  <div class="div-nav">
+    <ul>
+      <a href="<?php echo BASE; ?>" title="Home">
+        <li class="active"><i class="fa fa-home" aria-hidden="true"></i></li>
+      </a>
+      <a href="<?php echo BASE; ?>evento" title="Criar Evento">
+        <li><i class="fa fa-plus" aria-hidden="true"></i></li>
+      </a>
+      <a href="<?php echo BASE; ?>" title="Buscar">
+        <li><i class="fa fa-search" aria-hidden="true"></i></li>
+      </a>
+      <a href="<?php echo BASE . 'login/sair'; ?>" title="Sair">
+        <li><i class="fa fa-sign-out" aria-hidden="true"></i></li>
+      </a>
+    </ul>
+  </div>
+</nav>
+<section class="map">
+  <div id="map"></div>
+</section>
+
+<footer>
+  <p>Amanda e Rafaela</p>
+</footer>
+
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvUhehS52WPxo9Auyw_7dO7HHyLlqzmcU&callback=initMap">
+</script>
 <script>
 var valores = '<?php echo json_encode($eventos) ?>';
 // transforma o json em objeto
@@ -76,7 +83,7 @@ var map;
               title:obj.tema,
               id: obj.id
           });
-          
+
           marker.setMap(map);
           markers.push(marker);
         });

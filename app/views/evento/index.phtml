@@ -2,54 +2,66 @@
 </body>
 
 <header>
-    <div class="header">
-      <div class="center">
-        <h4 class="left">NOME DO SISTEMA </h4>
-        <a class="rigth" href="<?php echo BASE . 'login/sair'; ?>">sair</a>
+    <div>
+      <h3>NOME DO SISTEMA </h3>
+    </div>
+</header>
+<nav class="nav left">
+  <div class="div-nav">
+    <ul>
+      <a href="<?php echo BASE; ?>" title="Home">
+        <li><i class="fa fa-home" aria-hidden="true"></i></li>
+      </a>
+      <a href="<?php echo BASE; ?>evento" title="Criar Evento">
+        <li class="active"><i class="fa fa-plus" aria-hidden="true"></i></li>
+      </a>
+      <a href="<?php echo BASE; ?>" title="Buscar">
+        <li><i class="fa fa-search" aria-hidden="true"></i></li>
+      </a>
+      <a href="<?php echo BASE . 'login/sair'; ?>" title="Sair">
+        <li><i class="fa fa-sign-out" aria-hidden="true"></i></li>
+      </a>
+    </ul>
+  </div>
+</nav>
+
+<section class="evento">
+  <div class="center">
+    <form method="post" action="<?php echo BASE . 'evento/criar'; ?>" id="form" class="formulario">
+      <div class="left w40 forms">
+        <h4>Crie seu evento<h4>
+        <input type="text" required id="titulo" name="titulo" placeholder="Titulo"/>
+        <div class="sub-div-form left">
+          <input type="date" required id="periodo" name="periodo"/>
+        </div>
+        <div class="sub-div-form rigth">
+          <select id="tema" name="tema">
+            <option value="Contrução Civil">Contrução Civil</option>
+            <option value="Informática">Informática</option>
+            <option value="Automação">Automação</option>
+            <option value="Linguagens">Linguagens</option>
+            <option value="Humanidades">Humanidades</option>
+            <option value="Diversos">Diversos</option>
+          </select>
+        </div>
         <div class="clear"></div>
+        <input id="pac-input" type="text" placeholder="Local" required>
+        <input type="submit" value="Criar"/>
       </div>
-    </div>
-    <div class="sub-header">
-      <div class="center">
-        <h2>Criar evento</h2>
+
+      <div class="rigth w60 mapa">
+        <div id="map"></div>
+        <input type="hidden" readonly id="lat" name="lat"/>
+        <input type="hidden" readonly id="long" name="lng"/>
       </div>
-    </div>
-  </header>
-  <section class="section-evento">
-      <div class="center">
-        <form method="post" action="<?php echo BASE . 'evento/criar'; ?>" id="form" class="formulario">
-          <div class="left w40">
-            <h4>Titulo</h4>
-            <input type="text" required id="titulo" name="titulo"/>
-            <div class="sub-div-form left">
-              <h4>Periodo</h4>
-              <input type="date" required id="periodo" name="periodo"/>
-            </div>
-            <div class="sub-div-form rigth">
-              <h4>Tema</h4>
-              <select id="tema" name="tema">
-                <option value="Contrução Civil">Contrução Civil</option>
-                <option value="Informática">Informática</option>
-                <option value="Automação">Automação</option>
-                <option value="Linguagens">Linguagens</option>
-                <option value="Humanidades">Humanidades</option>
-                <option value="Diversos">Diversos</option>
-              </select>
-            </div>
-            <div class="clear"></div>
-            <input type="submit" value="Criar"/>
-            <p class="btn"><a  href="<?php echo BASE ?>">Voltar</a></p>
-          </div>
-          <div class="rigth w60 mapa">
-            <input id="pac-input" type="text" placeholder="Buscar... " required>
-            <div id="map"></div>
-            <input type="hidden" readonly id="lat" name="lat"/>
-            <input type="hidden" readonly id="long" name="lng"/>
-          </div>
-          <div class="clear"></div>
-        </form>
-      </div>
-  </section>
+      <div class="clear"></div>
+    </form>
+  </div>
+</section>
+<footer>
+  <p>Amanda e Rafaela</p>
+</footer>
+
   <script>
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {

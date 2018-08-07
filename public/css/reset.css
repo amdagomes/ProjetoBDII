@@ -42,7 +42,9 @@ animation: fadeIn 2s ease;
 .clear{
 	clear: both;
 }
-
+.w50{
+		width: 50%;
+}
 .w40{
 	width: 40%;
 }

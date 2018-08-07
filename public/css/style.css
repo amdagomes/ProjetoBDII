@@ -59,6 +59,49 @@ div.alert ul li{
 }
 
 /**
+* HEADER E FOOTER
+* ============================================================
+*/
+header{
+	width: 100%;
+	height: 50px;
+	color: white;
+	background-image: url('../img/bg-login.jpg');
+	background-position: bottom;
+}
+header div{
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	background: rgba(10,161,166,0.8);
+	background: -moz-linear-gradient(rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(10,161,166,0.8)), color-stop(100%, rgba(212,26,240,0.8)));
+	background: -webkit-linear-gradient(rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: -o-linear-gradient(rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: -ms-linear-gradient(rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: linear-gradient( rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0aa1a6', endColorstr='#d41af0', GradientType=0 );
+}
+header h3{
+	text-align: center;
+}
+
+footer{
+	width: 100%;
+	height: 40px;
+	padding: 10px;
+}
+footer p{
+	font-size: 10px;
+	text-align: center;
+}
+/**
+*
+* ============================================================
+*/
+
+
+/**
 * DEFINIÇÕES GERAIS DE FORMULARIOS
 * ============================================================
 */
@@ -124,106 +167,108 @@ div.box-cadastro-usuario a.close i{
 * HOME
 * ===================================================
 */
-
-body.home{
-	background-color: #ebebeb;
-}
-
-div.header{
-	padding: 1%;
-	background-color: #432C6A;
-	color: white
-}
-div.header a{
-	color: white;
-	text-decoration: none;
-}
-
-div.sub-header{
-	padding: 2% 1% 0 1%;
-	background-color: #4C3177;
-}
-
-div.sub-header div{
-	padding: 2% 2% 1% 2%;
-	border-top-right-radius: 5px;
-	border-top-left-radius: 5px;
-	background-color: #d7d7d7;
-	color: #4C3177;
-}
-section.section-home div.center{
-	position: relative;
-	height: 400px;
-	min-height: 250px;
-}
-
-.section-home div#map{
+nav.nav{
+	width: auto;
+	height: auto;
+	top: 50%;
+	transform: translateY(-50%);
 	position: absolute;
-	left: 0;
+	background: url(../img/bg-home.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: 3;
+}
+
+nav.nav .div-nav{
 	width: 100%;
 	height: 100%;
-}
-
-footer{
-	padding: 2%;
-	text-align: center;
-}
-
-footer a{
-	text-decoration: none;
-	padding: 10px 15px;
-	border-radius: 50px;
+	padding: 50px 0;
 	color: white;
-	background-color: #36e89b;
-	transition: 1s ease;
+	background: rgba(10,161,166,0.8);
+	background: -moz-linear-gradient(top, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(10,161,166,0.8)), color-stop(100%, rgba(212,26,240,0.8)));
+	background: -webkit-linear-gradient(top, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: -o-linear-gradient(top, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: -ms-linear-gradient(top, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	background: linear-gradient(to bottom, rgba(10,161,166,0.8) 0%, rgba(212,26,240,0.8) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0aa1a6', endColorstr='#d41af0', GradientType=0 );
 }
-footer a:hover{
-	background-color: #36e89b;
-	border-bottom: 3px solid #30CE8A;
+nav.nav, nav.nav .div-nav{
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+.div-nav li{
+	width: 100%;
+	padding: 10px 20px;
+}
+.div-nav a{
+	font-size: 30px;
+	text-decoration: none;
+	color: white;
+}
+.div-nav li:hover, .div-nav li.active{
+	background-color: rgba(39, 71, 107, .6);
 }
 
-footer a:first-child{
-	margin-right: 4%;
+
+section.map{
+	width: 100%;
+	height: 85vh;
+	min-height: 400px;
+}
+section.map div#map{
+	width: 100%;
+	height: 100%;
 }
 
 /**
 * FORMULARIO CRIAR EVENTO
 * ============================================================
 */
-section.section-evento {
-	margin-bottom: 15px;
+section.evento form.formulario{
+	height: 500px;
 }
-section.section-evento .formulario{
-	padding-top: 20px;
+section.evento form.formulario input, section.evento form.formulario select{
+	border-radius: 25px;
+	padding: 10px;
 }
-section.section-evento .formulario div:first-child{
-	padding-right: 10px;
+section.evento form.formulario {
+	position: relative;
+	margin: 0 0 10px 0;
+}
+section.evento form.formulario .sub-div-form{
+	width: 49%;
+}
+section.evento form.formulario select{
+	width: 100%;
+}
+
+section.evento .forms{
+	height: 300px;
+	position: absolute;
+	top: 15%;
+	transition: translateY(-25%);
+	padding: 30px 50px;
+}
+section.evento .forms h4{
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 25px;
 }
 p.btn{
 	text-align: center;
 }
-section.section-evento .formulario p.btn a{
-	color: white;
-	text-decoration: none;
-}
-.sub-div-form{
-	width: 49%;
-}
-.sub-div-form input, .sub-div-form select{
-	width: 100%;
-}
-input#pac-input{
-	margin-bottom: 5px;
-}
-div.mapa{
-	height: 350px;
+
+
+section.evento form.formulario div.mapa{
+	height: 100%;
 	min-height: 200px;
-	margin-bottom: 20px;
 }
 
-section.section-evento form.formulario div#map{
+section.evento form.formulario div#map{
 	width: 100%;
-	height: 90%;
+	height: 100%;
 }
 
 @media screen and (max-width: 400px){
