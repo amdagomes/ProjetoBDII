@@ -49,6 +49,8 @@ var evento = JSON.parse(valores);
 // percorre o objeto evento
 
 var map;
+var marker;
+var infoBox = [];
         function initMap(){
           var map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -6.889582, lng: -38.544935},
@@ -74,8 +76,7 @@ var map;
             // Browser doesn't support Geolocation
             handleLocationError(false, infoWindow, map.getCenter());
           }
-          var marker;
-          var markers = [];
+
         //insere marcadores no mapa
         evento.forEach(function(obj, index){
           marker = new google.maps.Marker({
@@ -83,9 +84,13 @@ var map;
               title:obj.tema,
               id: obj.id
           });
+          infoBox[obj.id] = new google.maps.InfoWindow({
+                content: '<h4>Titulo: ' + obj.titulo + '</h4><p>Tema: ' + obj.tema + '<br>Data: ' + obj.periodo + '</p>'
+          });
 
           marker.setMap(map);
-          markers.push(marker);
+          //infoBox[marker.id].marker = marker;
+          marker.addListener(marker, 'click',teste(marker.id, marker));
         });
 
         /*(function (markers, evento) {
@@ -102,17 +107,9 @@ var map;
         })(marker, evento);
         */
 
-
-        google.maps.event.addListener(marker, "click", function (e) {
-            var id = Number(marker.id);
-            evento.forEach(function(obj, index){
-              if(id == Number(obj.id)){
-                var conteudo = '<h4>Titulo: ' + obj.titulo + '</h4><p>Tema: ' + obj.tema + '<br>Data: ' + obj.periodo + '</p>';
-                infoWindow.setContent(conteudo);
-                infoWindow.open(map, marker);
-              }
-              });
-        });
+        function teste(id, marker){
+          infoBox[id].open(map, marker);
+        }
 
         }
 
