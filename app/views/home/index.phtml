@@ -85,7 +85,8 @@ var infoBox = [];
               id: obj.id
           });
           infoBox[obj.id] = new google.maps.InfoWindow({
-                content: '<h4>Titulo: ' + obj.titulo + '</h4><p>Tema: ' + obj.tema + '<br>Data: ' + obj.periodo + '</p>'
+              maxWidth: 150,
+              content: '<h4>' + obj.titulo + '</h4><p>Tema: ' + obj.tema + '<br>Data: ' + obj.periodo + '<br>Local: ' + obj.local + '</p>'
           });
 
           marker.setMap(map);
