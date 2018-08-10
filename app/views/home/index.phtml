@@ -102,7 +102,7 @@ var long;
             });
 
             google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(place.name);
+            infowindow.setContent('<h4>' + place.titulo + '</h4><p>Tema: ' + place.tema + '<br>Data: ' + place.periodo + '<br>Local: ' + place.local + '</p>');
             infowindow.open(map, this);
             });
         }
