@@ -50,9 +50,9 @@ var results = JSON.parse(valores);
 
 var map;
 var infowindow;
-var lati;
-var long;
+
         function initMap() {
+            var pyrmont = {lat: -6.888761, lng: -38.559558};
             infowindow = new google.maps.InfoWindow();
             // Try HTML5 geolocation.
             if (navigator.geolocation) {
@@ -61,8 +61,10 @@ var long;
                   lat: position.coords.latitude,
                   lng: position.coords.longitude
                 };
-                lati = position.coords.latitude;
-                long = position.coords.longitude;
+                pyrmont = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude
+                };
                 infowindow.setPosition(pos);
                 infowindow.setContent('Estou aqui!');
                 map.setCenter(pos);
@@ -74,25 +76,26 @@ var long;
               handleLocationError(false, infoWindow, map.getCenter());
             }
 
-            var pyrmont = {lat: Number(lati), lng: Number(long)};
-
             map = new google.maps.Map(document.getElementById('map'), {
             center: pyrmont,
             zoom: 18
             });
+
             service = new google.maps.places.PlacesService(map);
 
             service.nearbySearch({
             location: pyrmont,
-            radius: 500
+            radius: '50000'
             }, callback);
-            callback(results);
+            callback(results, status);
         }
 
-        function callback(results) {
+        function callback(results, status) {
+  
             for (var i = 0; i < results.length; i++) {
                 createMarker(results[i]);
             }
+
         }
 
         function createMarker(place) {
