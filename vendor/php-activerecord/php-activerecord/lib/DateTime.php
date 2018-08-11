@@ -45,7 +45,6 @@ class DateTime extends \DateTime implements DateTimeInterface
 	 */
 	public static $FORMATS = array(
 		'db'      => 'Y-m-d H:i:s',
-		'custom'	=> 'd-m-Y',
 		'number'  => 'YmdHis',
 		'time'    => 'H:i',
 		'short'   => 'd M H:i',

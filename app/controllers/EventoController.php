@@ -15,8 +15,6 @@ class EventoController extends \HXPHP\System\Controller
 
     $this->auth->redirectCheck();
 
-
-
     $this->load(
       'Helpers\Menu',
       $this->request,
@@ -34,13 +32,13 @@ class EventoController extends \HXPHP\System\Controller
 		if (!empty($post)) {
 			$cadastrarEvento = Event::criar($post);
 
-			if ($cadastrarEvento->status === false) {
-				$this->load('Helpers\Alert', array(
-					'danger',
-					'Não foi possível efetuar seu cadastro. Verifique os erros abaixo:',
-					$cadastrarEvento->errors
-				));
-			}
+
+        $this->load('Modules\Messages', 'auth');
+				$this->messages->setBlock('alerts');
+				$error = $this->messages->getByCode($cadastrarEvento->code);
+
+				$this->load('Helpers\Alert', $error);
+			
 		}
 	}
 }

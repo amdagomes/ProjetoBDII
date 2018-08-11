@@ -203,7 +203,7 @@ nav.nav, nav.nav .div-nav{
 	padding: 10px 20px;
 }
 .div-nav a{
-	font-size: 30px;
+	font-size: 25px;
 	text-decoration: none;
 	color: white;
 }
@@ -255,6 +255,19 @@ section.evento .forms h4{
 	text-align: center;
 	font-size: 25px;
 	margin-bottom: 25px;
+}
+section.evento .forms .alert-info h4, section.evento .forms .alert-danger h4{
+	margin-bottom: 5px !important;
+}
+section.evento .forms .alert-info, section.evento .forms .alert-info h4{
+	font-size: 12px;
+	color: green;
+	margin-bottom: 10px;
+}
+section.evento .forms .alert-danger, section.evento .forms .alert-danger h4{
+	font-size: 12px;
+	color: red;
+	margin-bottom: 10px;
 }
 p.btn{
 	text-align: center;

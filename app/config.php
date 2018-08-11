@@ -1,6 +1,6 @@
 <?php
   $configs = new HXPHP\System\Configs\Config;
-  ActiveRecord\Connection::$datetime_format = 'Y-m-d H:i:s';
+  ActiveRecord\Connection::$datetime_format = 'Y-m-d';
 
   //Globais
   $configs->title = 'HXPHP Framework';
