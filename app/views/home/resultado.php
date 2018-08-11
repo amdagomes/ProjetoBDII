@@ -9,7 +9,7 @@ $conn= mysqli_connect($servidor,$usuario,$senha);
 $banco = mysqli_select_db($conn,$db_name);
 mysqli_set_charset($conn,'utf8');
 
-$resultado = mysqli_query($conn,"select * from events") or die("Erro");
+$resultado = mysqli_query($conn,"select * from events where periodo > NOW()") or die("Erro");
 
 $eventos = array();
 while($evento = mysqli_fetch_assoc($resultado))

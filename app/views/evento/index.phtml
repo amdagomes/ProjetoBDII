@@ -46,6 +46,7 @@
         </div>
         <div class="clear"></div>
         <input id="pac-input" name="local" type="text" placeholder="Local" required>
+        <?php echo (isset($this->alert) ? $this->alert : '' ) ?>
         <input type="submit" value="Criar"/>
       </div>
 
