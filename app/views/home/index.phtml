@@ -14,13 +14,13 @@
     <div>
       <select id="option" class="left" name="filtro">
         <option value="Tema">Tema</option>
-        <option value="Periodo">Periodo</option>
+        <option value="Data">Data</option>
       </select>
       <input id="input" type="text" class="left" name="teste"/>
       <i class="fa fa-search" aria-hidden="true"></i>
     </div>
     <div class="clear"></div>
-    <input type="submit" value="filtrar"> 
+    <input type="submit" value="filtrar">
   </form>
 </div>
 
@@ -66,80 +66,79 @@ var map;
 var infowindow;
 var circle;
 
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -6.888761, lng: -38.559558},
-            zoom: 10
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -6.888761, lng: -38.559558},
+      zoom: 10
+    });
+    infowindow = new google.maps.InfoWindow();
+
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            infowindow.setPosition(pos);
+            infowindow.setContent('Estou aqui.');
+            infowindow.open(map);
+            map.setCenter(pos);
+
+            circle = new google.maps.Circle({
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#FF0000',
+              fillOpacity: 0,
+              map: map,
+              center: pos,
+              radius: 50000
             });
-            infowindow = new google.maps.InfoWindow();
 
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
-                };
-                infowindow.setPosition(pos);
-                infowindow.setContent('Estou aqui.');
-                infowindow.open(map);
-                map.setCenter(pos);
+            callback(results, pos);
 
-                circle = new google.maps.Circle({
-                  strokeColor: '#FF0000',
-                  strokeOpacity: 0.8,
-                  strokeWeight: 2,
-                  fillColor: '#FF0000',
-                  fillOpacity: 0.35,
-                  map: map,
-                  center: pos,
-                  radius: 50000
-                });
-
-                callback(results, pos);
-
-              }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-              });
-            } else {
-              // Browser doesn't support Geolocation
-              handleLocationError(false, infoWindow, map.getCenter());
-            }
-
-        function callback(results, posicao) {
-            for (var i = 0; i < results.length; i++) {
-                createMarker(results[i], posicao);
-            }
+        }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+           });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
         }
 
-        function createMarker(place, posicao) {
-          var marker_lat_lng = new google.maps.LatLng(Number(place.lat),Number(place.lng));
-          var posicao_at = new google.maps.LatLng(Number(posicao.lat),Number(posicao.lng));
+      function callback(results, posicao) {
+          for (var i = 0; i < results.length; i++) {
+              createMarker(results[i], posicao);
+          }
+      }
 
-          var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(marker_lat_lng, posicao_at);
+      function createMarker(place, posicao) {
+        var marker_lat_lng = new google.maps.LatLng(Number(place.lat),Number(place.lng));
+        var posicao_at = new google.maps.LatLng(Number(posicao.lat),Number(posicao.lng));
 
-          if (distance_from_location <= 50000){
-            var marker = new google.maps.Marker({
+        var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(marker_lat_lng, posicao_at);
+
+        if (distance_from_location <= 50000){
+          var marker = new google.maps.Marker({
             map: map,
             position: {lat: Number(place.lat), lng: Number(place.lng)}
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent('<h4>' + place.titulo + '</h4><p>Tema: ' + place.tema + '<br>Data: ' + place.periodo + '<br>Local: ' + place.local + '</p>');
-            infowindow.open(map, this);
-            });
-          }
-
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent('<h4>' + place.titulo + '</h4><p>Tema: ' + place.tema + '<br>Inicio: ' + place.dataI + '  Fim: ' + place.dataF + '<br>Local: ' + place.local + '</p>');
+          infowindow.open(map, this);
+          });
         }
 
-        document.getElementById("option").addEventListener("click", mudaBusca);
-        function mudaBusca(){
-          opcao = document.getElementById('option').value;
-          switch (opcao) {
-            case "Periodo":
-              document.getElementById('input').type = "date";
-              break;
-            default:
-              document.getElementById('input').type = "text";
-          }
+      }
+
+      document.getElementById("option").addEventListener("click", mudaBusca);
+      function mudaBusca(){
+        opcao = document.getElementById('option').value;
+        switch (opcao) {
+          case "Data":
+            document.getElementById('input').type = "date";
+            break;
+          default:
+            document.getElementById('input').type = "text";
         }
+      }
 
 </script>

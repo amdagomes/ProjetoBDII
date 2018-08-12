@@ -11,29 +11,23 @@ mysqli_set_charset($conn,'utf8');
 
 if (isset($_POST['filtro'])) {
 	$teste=$_POST['filtro'];
-	if($teste=="Periodo"){
-	if(isset($_POST['teste'])) {
-    	$teste2=date($_POST['teste']);
+	if($teste=="Data"){
+			if(isset($_POST['teste'])) {
+	    		$teste2=date($_POST['teste']);
+					$resultado = mysqli_query($conn,"select * from events where dataI ='$teste2'") or die("Erro");
+			}
+	}
 
-     $resultado = mysqli_query($conn,"select * from events where periodo ='$teste2'") or die("Erro");}
-}
-
-     if($teste=="Tema"){
-    if(isset($_POST['teste'])) {
-    	$teste2=$_POST['teste'];
-    $resultado = mysqli_query($conn,"select * from events where periodo> NOW()&& tema ='$teste2'") or die("Erro");
-}
-}
+  if($teste=="Tema"){
+	    if(isset($_POST['teste'])) {
+	    		$teste2=$_POST['teste'];
+	    		$resultado = mysqli_query($conn,"select * from events where dataI > NOW() && tema ='$teste2'") or die("Erro");
+			}
+	}
 }
 else{
-
-
-    	$resultado = mysqli_query($conn,"select * from events where periodo> NOW()") or die("Erro");
-    }
-
-
-
-
+    $resultado = mysqli_query($conn,"select * from events where dataI > NOW()") or die("Erro");
+}
 
 //$resultado = mysqli_query($conn,"select * from events where periodo > NOW()") or die("Erro");
 

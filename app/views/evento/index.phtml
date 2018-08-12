@@ -31,18 +31,19 @@
       <div class="left w40 forms">
         <h4>Crie seu evento<h4>
         <input type="text" required id="titulo" name="titulo" placeholder="Titulo"/>
+        <select id="tema" name="tema">
+          <option value="Construção Civil">Construção Civil</option>
+          <option value="Informática">Informática</option>
+          <option value="Automação">Automação</option>
+          <option value="Linguagens">Linguagens</option>
+          <option value="Humanidades">Humanidades</option>
+          <option value="Diversos">Diversos</option>
+        </select>
         <div class="sub-div-form left">
-          <input type="date" required id="periodo" name="periodo"/>
+          <input type="date" required id="dataI" name="dataI"/>
         </div>
         <div class="sub-div-form rigth">
-          <select id="tema" name="tema">
-            <option value="Contrução Civil">Contrução Civil</option>
-            <option value="Informática">Informática</option>
-            <option value="Automação">Automação</option>
-            <option value="Linguagens">Linguagens</option>
-            <option value="Humanidades">Humanidades</option>
-            <option value="Diversos">Diversos</option>
-          </select>
+            <input type="date" id="dataF" name="dataF"/>
         </div>
         <div class="clear"></div>
         <input id="pac-input" name="local" type="text" placeholder="Local" required>
