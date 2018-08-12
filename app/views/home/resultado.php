@@ -9,7 +9,33 @@ $conn= mysqli_connect($servidor,$usuario,$senha);
 $banco = mysqli_select_db($conn,$db_name);
 mysqli_set_charset($conn,'utf8');
 
-$resultado = mysqli_query($conn,"select * from events where periodo > NOW()") or die("Erro");
+if (isset($_POST['filtro'])) {
+	$teste=$_POST['filtro'];
+	if($teste=="Periodo"){
+	if(isset($_POST['teste'])) {
+    	$teste2=date($_POST['teste']);
+
+     $resultado = mysqli_query($conn,"select * from events where periodo ='$teste2'") or die("Erro");}
+}
+
+     if($teste=="Tema"){
+    if(isset($_POST['teste'])) {
+    	$teste2=$_POST['teste'];
+    $resultado = mysqli_query($conn,"select * from events where periodo> NOW()&& tema ='$teste2'") or die("Erro");
+}
+}
+}
+else{
+
+
+    	$resultado = mysqli_query($conn,"select * from events where periodo> NOW()") or die("Erro");
+    }
+
+
+
+
+
+//$resultado = mysqli_query($conn,"select * from events where periodo > NOW()") or die("Erro");
 
 $eventos = array();
 while($evento = mysqli_fetch_assoc($resultado))
