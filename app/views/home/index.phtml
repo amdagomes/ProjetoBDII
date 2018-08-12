@@ -9,6 +9,20 @@
   </div>
 </header>
 
+<div class="box-busca">
+  <form method="post">
+    <div>
+      <select id="option" class="left">
+        <option value="Tema">Tema</option>
+        <option value="Periodo">Periodo</option>
+      </select>
+      <input id="input" type="text" class="left"/>
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+    <div class="clear"></div>
+  </form>
+</div>
+
 <nav class="nav left">
   <div class="div-nav">
     <ul>
@@ -113,6 +127,18 @@ var circle;
             });
           }
 
+        }
+
+        document.getElementById("option").addEventListener("click", mudaBusca);
+        function mudaBusca(){
+          opcao = document.getElementById('option').value;
+          switch (opcao) {
+            case "Periodo":
+              document.getElementById('input').type = "date";
+              break;
+            default:
+              document.getElementById('input').type = "text";
+          }
         }
 
 </script>

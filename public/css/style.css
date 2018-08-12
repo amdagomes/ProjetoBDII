@@ -167,6 +167,18 @@ div.box-cadastro-usuario a.close i{
 * HOME
 * ===================================================
 */
+.box-busca{
+	width: 100%;
+	text-align: center;
+}
+.box-busca form{
+	display: inline-block;
+	padding: 5px;
+}
+.box-busca form input, .box-busca form select{
+	padding: 2px 10px;
+}
+
 nav.nav{
 	width: auto;
 	height: auto;
