@@ -33,6 +33,13 @@ if (isset($_POST['filtro'])) {
 
        }
     }
+    if($opcao=="Endereco"){
+       if(isset($_POST['filtrar'])) {
+          $filtrar=$_POST['filtrar'];
+          $resultado = mysqli_query($conn,"select * from events where dataI> NOW() && local= '$filtrar'") or die("Erro");
+
+       }
+    }
 }
 else{
     $resultado = mysqli_query($conn,"select * from events where dataI> NOW()") or die("Erro");
