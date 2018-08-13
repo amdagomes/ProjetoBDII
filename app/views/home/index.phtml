@@ -15,14 +15,15 @@
       <select id="option" class="left" name="filtro">
         <option value="Todos">Todos</option>
         <option value="Tema">Tema</option>
-        <option value="Periodo">Periodo</option>
-
+        <option value="Endereco">Endereço</option>
+        <option value="Data">Data</option>
       </select>
       <input id="input" type="text" class="left" name="filtrar"/>
-      <i class="fa fa-search" aria-hidden="true"></i>
+      <input id="iptBusca" type="hidden" class="left"/>
+      <input type="submit" value="filtrar">
     </div>
     <div class="clear"></div>
-    <input type="submit" value="filtrar"> 
+
   </form>
 </div>
 
@@ -34,9 +35,6 @@
       </a>
       <a href="<?php echo BASE; ?>evento" title="Criar Evento">
         <li><i class="fa fa-plus" aria-hidden="true"></i></li>
-      </a>
-      <a href="<?php echo BASE; ?>" title="Buscar">
-        <li><i class="fa fa-search" aria-hidden="true"></i></li>
       </a>
       <a href="<?php echo BASE . 'login/sair'; ?>" title="Sair">
         <li><i class="fa fa-sign-out" aria-hidden="true"></i></li>
@@ -61,87 +59,169 @@
 <script>
 var valores = '<?php echo json_encode($eventos) ?>';
 // transforma o json em objeto
+var resultados = JSON.parse(valores);
 var results = JSON.parse(valores);
 // percorre o objeto evento
 
 var map;
 var infowindow;
 var circle;
+var markers = [];
 
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -6.888761, lng: -38.559558},
-            zoom: 10
+map = new google.maps.Map(document.getElementById('map'), {
+center: {lat: -6.888761, lng: -38.559558},
+zoom: 10
+});
+infowindow = new google.maps.InfoWindow();
+
+    function init(){
+
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            infowindow.setPosition(pos);
+            infowindow.setContent('Estou aqui.');
+            infowindow.open(map);
+            map.setCenter(pos);
+            
+            circle = new google.maps.Circle({
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#FF0000',
+              fillOpacity: 0,
+              map: map,
+              center: pos,
+              radius: 50000
             });
-            infowindow = new google.maps.InfoWindow();
 
-            // Try HTML5 geolocation.
-            if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude
-                };
-                infowindow.setPosition(pos);
-                infowindow.setContent('Estou aqui.');
-                infowindow.open(map);
-                map.setCenter(pos);
+            callback(results, pos);
 
-                circle = new google.maps.Circle({
-                  strokeColor: '#FF0000',
-                  strokeOpacity: 0.8,
-                  strokeWeight: 2,
-                  fillColor: '#FF0000',
-                  fillOpacity: 0.35,
-                  map: map,
-                  center: pos,
-                  radius: 50000
-                });
+        }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+           });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+    }
+    init();
 
-                callback(results, pos);
+      document.getElementById("option").addEventListener("click", mudaBusca);
+      function mudaBusca(){
+        opcao = document.getElementById('option').value;
+        switch (opcao) {
+          case "Data":
+            document.getElementById('input').type = "date";
+            document.getElementById('iptBusca').type = 'hidden';
+            break;
+          case "Endereco":
+            document.getElementById('input').type = 'hidden';
+            document.getElementById('iptBusca').type = 'text';
+            buscaEndereco();
+            break;
+          case "Tema":
+            document.getElementById('iptBusca').type = 'hidden';
+            document.getElementById('input').type = 'text';
+            break;
+        }
+      }
 
-              }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-              });
+      function buscaEndereco(){
+              // Create the search box and link it to the UI element.
+        var input = document.getElementById('iptBusca');
+        var searchBox = new google.maps.places.SearchBox(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            var pos = {
+              lat: place.geometry.location.lat(),
+              lng: place.geometry.location.lng()
+            };
+
+            circle.setMap(null);
+            infowindow.setPosition(pos);
+            infowindow.setContent('Estou aqui.');
+            infowindow.open(map);
+            map.setCenter(pos);
+
+            circle = new google.maps.Circle({
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#FF0000',
+              fillOpacity: 0,
+              map: map,
+              center: pos,
+              radius: 50000
+            });
+
+            callback(results, pos);
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
             } else {
-              // Browser doesn't support Geolocation
-              handleLocationError(false, infoWindow, map.getCenter());
+              bounds.extend(place.geometry.location);
             }
+          });
 
-        function callback(results, posicao) {
-            for (var i = 0; i < results.length; i++) {
-                createMarker(results[i], posicao);
-            }
+          map.fitBounds(bounds);
+      });
+    }
+
+    function callback(results, posicao) {
+      markers.forEach(function(marker) {
+        marker.setMap(null);
+      });
+        for (var i = 0; i < results.length; i++) {
+            createMarker(results[i], posicao);
         }
+    }
 
-        function createMarker(place, posicao) {
-          var marker_lat_lng = new google.maps.LatLng(Number(place.lat),Number(place.lng));
-          var posicao_at = new google.maps.LatLng(Number(posicao.lat),Number(posicao.lng));
+    function createMarker(place, posicao) {
+      var marker_lat_lng = new google.maps.LatLng(Number(place.lat),Number(place.lng));
+      var posicao_at = new google.maps.LatLng(Number(posicao.lat),Number(posicao.lng));
 
-          var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(marker_lat_lng, posicao_at);
+      var distance_from_location = google.maps.geometry.spherical.computeDistanceBetween(marker_lat_lng, posicao_at);
 
-          if (distance_from_location <= 50000){
-            var marker = new google.maps.Marker({
-            map: map,
-            position: {lat: Number(place.lat), lng: Number(place.lng)}
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent('<h4>' + place.titulo + '</h4><p>Tema: ' + place.tema + '<br>Data: ' + place.periodo + '<br>Local: ' + place.local + '</p>');
-            infowindow.open(map, this);
-            });
-          }
+      if (distance_from_location <= 50000){
+        var marker = new google.maps.Marker({
+          map: map,
+          position: {lat: Number(place.lat), lng: Number(place.lng)}
+        });
+        markers.push(marker);
+        google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent('<h4>' + place.titulo + '</h4><p>Tema: ' + place.tema + '<br>Inicio: ' + place.dataI + '  Fim: ' + place.dataF + '<br>Local: ' + place.local + '</p>');
+        infowindow.open(map, this);
+        });
+      }
 
-        }
-
-        document.getElementById("option").addEventListener("click", mudaBusca);
-        function mudaBusca(){
-          opcao = document.getElementById('option').value;
-          switch (opcao) {
-            case "Periodo":
-              document.getElementById('input').type = "date";
-              break;
-            default:
-              document.getElementById('input').type = "text";
-          }
-        }
+    }
 
 </script>
