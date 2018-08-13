@@ -11,39 +11,33 @@ mysqli_set_charset($conn,'utf8');
 
 if (isset($_POST['filtro'])) {
     $opcao=$_POST['filtro'];
-    if($opcao=="Data"){
-    if(isset($_POST['filtrar'])) {
-        $filtrar=date($_POST['filtrar']);
 
-     $resultado = mysqli_query($conn,"select * from events where dataI> NOW() && dataI ='$filtrar'") or die("Erro");}
-}
+    if($opcao=="Data"){
+      if(isset($_POST['filtrar'])) {
+        $filtrar=date($_POST['filtrar']);
+        $resultado = mysqli_query($conn,"select * from events where dataI> NOW() && dataI ='$filtrar'") or die("Erro");
+      }
+   }
 
      if($opcao=="Tema"){
-    if(isset($_POST['filtrar'])) {
-        $filtrar=$_POST['filtrar'];
-    $resultado = mysqli_query($conn,"select * from events where dataI> NOW()&& tema ='$filtrar'") or die("Erro");
-}
-}
-
-     if($opcao=="Todos"){
-    if(isset($_POST['filtrar'])) {
-        $filtrar=$_POST['filtrar'];
-    $resultado = mysqli_query($conn,"select * from events where dataI> NOW()") or die("Erro");
-
-}
-}
-}
-else{
-
-
-        $resultado = mysqli_query($conn,"select * from events where dataI> NOW()") or die("Erro");
+      if(isset($_POST['filtrar'])) {
+          $filtrar=$_POST['filtrar'];
+          $resultado = mysqli_query($conn,"select * from events where dataI> NOW()&& tema ='$filtrar'") or die("Erro");
+      }
     }
 
+     if($opcao=="Todos"){
+       if(isset($_POST['filtrar'])) {
+          $filtrar=$_POST['filtrar'];
+          $resultado = mysqli_query($conn,"select * from events where dataI> NOW()") or die("Erro");
 
+       }
+    }
+}
+else{
+    $resultado = mysqli_query($conn,"select * from events where dataI> NOW()") or die("Erro");
+}
 
-
-
-//$resultado = mysqli_query($conn,"select * from events where periodo > NOW()") or die("Erro");
 
 $eventos = array();
 while($evento = mysqli_fetch_assoc($resultado))
@@ -51,25 +45,4 @@ while($evento = mysqli_fetch_assoc($resultado))
   array_push($eventos,$evento);
 }
 
-
-/*$con = new mysqli($servidor,$usuario,$senha, $db_name);
-if (mysqli_connect_errno()) trigger_error(mysqli_connect_error());
-
-    //Consultando banco de dados
-    $qryLista = mysqli_query($con, "SELECT * FROM events");
-
-    $array_da_consulta = mysqli_fetch_array($qryLista);
-
-    while($resultado = mysqli_fetch_assoc($qryLista)){
-        $vetor[] = array_map('utf8_decode', $resultado);
-    }
-
-    $json = json_encode($vetor);
-    echo $json;
-//Passando vetor em forma de json
-
-$fp = fopen("eventos.json", "w");
-fwrite($fp, json_encode($vetor));
-fclose($fp);
-*/
 ?>
