@@ -5,7 +5,7 @@
 
 <header>
   <div>
-    <h3>SISTEMA</h3>
+    <h3>GeoAcademic</h3>
   </div>
 </header>
 
@@ -20,7 +20,7 @@
       </select>
       <input id="input" type="text" class="left" name="filtrar"/>
       <input id="iptBusca" type="hidden" class="left"/>
-      <input type="submit" value="filtrar">
+      <input type="submit" value="filtrar" id="enviar">
     </div>
     <div class="clear"></div>
 
@@ -87,7 +87,7 @@ infowindow = new google.maps.InfoWindow();
             infowindow.setContent('Estou aqui.');
             infowindow.open(map);
             map.setCenter(pos);
-            
+
             circle = new google.maps.Circle({
               strokeOpacity: 0.8,
               strokeWeight: 2,
@@ -117,15 +117,18 @@ infowindow = new google.maps.InfoWindow();
           case "Data":
             document.getElementById('input').type = "date";
             document.getElementById('iptBusca').type = 'hidden';
+            document.getElementById('enviar').type = 'submit';
             break;
           case "Endereco":
             document.getElementById('input').type = 'hidden';
             document.getElementById('iptBusca').type = 'text';
+            document.getElementById('enviar').type = 'button';
             buscaEndereco();
             break;
           case "Tema":
             document.getElementById('iptBusca').type = 'hidden';
             document.getElementById('input').type = 'text';
+            document.getElementById('enviar').type = 'submit';
             break;
         }
       }

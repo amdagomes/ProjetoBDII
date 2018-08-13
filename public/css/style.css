@@ -52,6 +52,9 @@ div.alert ul li{
 	min-width: 250px;
 	padding: 3%;
 }
+.box-login h3{
+	text-align: center;
+}
 .box-login a{
 	color: rgb(169, 180, 195);
 	text-decoration: none;
