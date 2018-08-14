@@ -1,3 +1,11 @@
+## GeoAcademic
+
+Projeto referente a disciplina de Banco de Dados II do curso de Analise e Desenvolvimento de Sistemas do IFPB - Campus Cajazeiras.
+
+Trabalho desenvolvido utilizando o framework **HXPHP**, consiste em um sistema colaborativo para divulgação de eventos científicos. Os usuários poderão cadastrar eventos contendo os dados espaciais e os atributos descritivos, além de poder buscar por eventos utilizando filtros.
+
+----
+
 <p align="center"><a href="http://www.hxphp.com.br" target="_blank">
     <img src="http://www.hxphp.com.br/assets/img/hxphp-logo-fixedmenu.png">
 </a></p>
@@ -20,28 +28,13 @@ O objetivo é que o HXPHP se torne o **framework de iniciação** dos programado
 
 ----
 
-## Instalação via Composer
-
 #### Requisitos
 
 + [PHP 7.0+][2]
 + [MySql 5.5+][3]
 + [Apache][4]
-+ [Composer][5]
 
-#### PHP 5.x
-
-`composer create-project --prefer-dist hxphp/hxphp-2 hxphp`
-
-#### PHP 7.x
-
-`composer create-project --prefer-dist hxphp/hxphp hxphp`
-
-## Documentação
-
-#### PHP 5.x
-
-[https://hxphp.github.io/docs/2.0/][6]
+## Documentação HXPHP
 
 #### PHP 7.x
 
