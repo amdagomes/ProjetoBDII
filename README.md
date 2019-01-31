@@ -2,7 +2,7 @@
 
 Projeto referente a disciplina de Banco de Dados II do curso de Analise e Desenvolvimento de Sistemas do IFPB - Campus Cajazeiras.
 
-Trabalho desenvolvido utilizando o framework **HXPHP**, consiste em um sistema colaborativo para divulgação de eventos científicos. Os usuários poderão cadastrar eventos contendo os dados espaciais e os atributos descritivos, além de poder buscar por eventos utilizando filtros.
+Trabalho desenvolvido utilizando o framework **HXPHP**, PHP e a API do Maps, consiste em um sistema colaborativo para divulgação de eventos científicos. Os usuários poderão cadastrar eventos contendo os dados espaciais e os atributos descritivos, além de poder buscar por eventos utilizando filtros.
 
 ----
 
